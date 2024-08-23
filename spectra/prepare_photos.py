@@ -3,15 +3,14 @@ from PIL import Image
 import numpy as np
 
 
-# 7-color palette for GDEY073D46 ACeP display
+# 6-color palette for GDEP073E01 Spectra E6 display
 palette = [
     (0, 0, 0),       # Black
     (255, 255, 255), # White
-    (0, 255, 0),     # Green
-    (0, 0, 255),     # Blue
-    (255, 0, 0),     # Red
     (255, 255, 0),   # Yellow
-    (255, 165, 0),   # Orange
+    (255, 0, 0),     # Red
+    (0, 0, 255),     # Blue
+    (0, 255, 0),     # Green
 ]
 
 
@@ -53,6 +52,8 @@ def get_image_data(file):
     # Convert the image to the custom palette
     image = image.convert('RGB').quantize(palette=palette_img)
     image_data = np.array(image)
+    # Number 4 is not used in Spectra, blue and green are 5 and 6
+    image_data = np.where(image_data < 4, image_data, image_data + 1)
     return image_data
 
 

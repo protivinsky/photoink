@@ -26,25 +26,23 @@ PIN_BUSY = digitalio.DigitalInOut(board.D5)
 PIN_BUSY.direction = digitalio.Direction.INPUT
 
 
-# Color definitions for the GDEY073D46 ACeP display
+# Color definitions for the GDEP073E01 Spectra E6 display
 # 8bit
 Black = 0x00    # 000
 White = 0x11    # 001
-Green = 0x22    # 010
-Blue = 0x33     # 011
-Red = 0x44      # 100
-Yellow = 0x55   # 101
-Orange = 0x66   # 110
+Yellow = 0x22   # 010
+Red = 0x33      # 011
+Blue = 0x55     # 101
+Green = 0x66    # 110
 Clean = 0x77    # 111
 
 # 4bit
 black = 0x00    # 000
 white = 0x01    # 001
-green = 0x02    # 010
-blue = 0x03     # 011
-red = 0x04      # 100
-yellow = 0x05   # 101
-orange = 0x06   # 110
+yellow = 0x02   # 010
+red = 0x03      # 011
+blue = 0x05     # 101
+green = 0x06   # 110
 clean = 0x07    # 111
 
 # control vars
@@ -151,7 +149,7 @@ def display_init():
     write_cmd(VDCS)
     write_data(0x1E)
     write_cmd(T_VDCS)
-    write_data(0x00)
+    write_data(0x01)
     write_cmd(0x86)  # AGID
     write_data(0x00)
     write_cmd(PWS)
