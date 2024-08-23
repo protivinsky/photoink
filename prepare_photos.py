@@ -54,7 +54,7 @@ def get_image_data(file):
     return image_data
 
 
-source_path = os.path.join("showcase")
+source_path = os.path.join("photos")
 dest_path = os.path.join("ready")
 # source_path = "photos"
 # dest_path = os.path.join("controller", "img")

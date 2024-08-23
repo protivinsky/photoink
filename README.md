@@ -37,7 +37,7 @@ Any battery with 3.7V and JST-PH connector should work. I used LiPol battery wit
 
 ### Standing feet
 
-3D printed, based on the `...` OpenSCAD file.
+3D printed, based on the [standing_feet.scad](standing_feet.scad) OpenSCAD file.
 
 ### Others
 
@@ -56,6 +56,8 @@ As the resolution is only 800x480 and the display can use only a limited set of 
 
 After connecting the controller to the computer, it should appear as a storage device (after pressing `reset` button on the controller) and the photos should be just copied there under `img` folder.
 
+**If you have the newer GDEP073E01 display, use [spectra/prepare_photos.py](spectra/prepare_photos.py) instead!** It does not use orange color and encode other colors slightly differently, so the photos have to be transformed slightly differently.
+
 ### 2. Connecting controller and display
 
 Adapter board has 8 pins that need to be connected to corresponding pins on the controller by wires:
@@ -64,7 +66,7 @@ Adapter board has 8 pins that need to be connected to corresponding pins on the 
 - SDI and SCK to pins for SPI interface on the controller: SCK should be directly there, SDI correspond to MOSI (or just MO on small controllers)
 - the rest - CS (chip select), D/C (data / command), RES (reset), BUSY - to any digital pins. I used 10, 9, 6 and 5 respectively (the exact pins are defined in the code for the controller).
 
-I just cut the wire, remove a part of the plastic and soldered it directly to appropriate pins. Connecting the battery to the controller and the display to the adapter board is straightforward. I attached everything to the back of the display with thick two-sided tape (intended for bathroom tiles originally).
+I just cut the wire, removed a part of the plastic and soldered it directly to appropriate pins. Connecting the battery to the controller and the display to the adapter board is straightforward. I attached everything to the back of the display with thick two-sided tape (intended for bathroom tiles originally).
 
 ### 3. Code for the controller
 
@@ -72,9 +74,15 @@ Everything is stored under the folder `controller`. The `lib` subfolder contains
 
 The Adafruit 5477 controller can be programmed with [CircuitPython](https://circuitpython.org) and [Thonny](https://thonny.org) is a very convenient IDE to use for it. It can directly flash the controller with CircuitPython and then run the code on the controller, even with REPL. So after flashing CircuitPython, the content of the folder `controller` should be just copied into the controller.
 
+All the custom code is in [controller/code.py](controller/code.py) file and mo of it is direct translation of original C++ code provided by the manufacturer (the initialization sequences). Then the controller checks all files within `img` subfolder, selects one of them at random and sends it to the controller. In addition, the state of the battery is checked and it is shown at the bottom of the frame as black line ("no black line" = battery is full; "black line over the whole lenght of the frame" = battery is empty). The battery status is only appoximate, but I still find it useful and inobtrusive.
+
+After displaying the picture, the controller goes to sleep and wakes up again in 1 hour to display another picture. As the display does not require any power for showing the picture, only for changing them, the battery can last for weeks and months.
+
+**If you have the newer GDEP073E01 display, use [spectra/code.py](spectra/code.py) instead of the version in `controller` folder!** There is one small change in the initalization sequence.
+
 ### 4. Standing feet
 
-They are defined with open-source [OpenSCAD](https://openscad.org) 3D modeller. You can just export them for 3D printing and then continue according to 3D printer that you have available. I used OpenSCAD as it allowed all the modelling to be handled in code and my requirements were very simple.
+They are defined with open-source [OpenSCAD](https://openscad.org) 3D modeller in [standing_feet.scad](standing_feet.scad) file. You can just export them for 3D printing and then continue according to 3D printer that you have available. I used OpenSCAD as it allowed all the modelling to be handled in code and my requirements were very simple.
 
 
-And that's it!
+And that's it, enjoy!
