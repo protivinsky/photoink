@@ -78,7 +78,7 @@ All the custom code is in [controller/code.py](controller/code.py) file and mo o
 
 After displaying the picture, the controller goes to sleep and wakes up again in 1 hour to display another picture. As the display does not require any power for showing the picture, only for changing them, the battery can last for weeks and months.
 
-**If you have the newer GDEP073E01 display, use [spectra/code.py](spectra/code.py) instead of the version in `controller` folder!** There is one small change in the initalization sequence.
+**If you have the newer GDEP073E01 display, it is better to use [spectra/code.py](spectra/code.py) instead of the version in `controller` folder.** There is one small recommended change in the initalization sequence (however it does not seem to be necessary).
 
 ### 4. Standing feet
 
@@ -86,3 +86,24 @@ They are defined with open-source [OpenSCAD](https://openscad.org) 3D modeller i
 
 
 And that's it, enjoy!
+
+## Further ideas
+
+### Raspberry Pi
+
+The display can be also control similarly from Raspberry Pi, only the code for setting up the pins and SPI communication has to be modified accordingly. The display can be them controlled even interactively via REPL.
+
+### Bigger display
+
+I was considering also bigger [13.3 inch GDEP133C02 display](https://www.good-display.com/product/559.html). It has better resolution (even though similar dpi). However it is much more expensive and at the moment, it can be used only with Good Display development board and there is no sample code (it relies fully on executable provided by Good Display).
+
+I do not know about any similar display kit that would allow to show more colors or provide better resolution.
+
+### Code tweaks and improvement
+
+Another possible improvements that I was considering, but was not really worthy for my use case:
+- Use compression for storing images (not sure what is supported on CircuitPython).
+- Use different conversion between RGB and 6/7-color palettes. Currently the conversion tries to preserve colors, however the result might be quite pixelated for some input images. Maybe this can be tweak to have less larger areas of identical color, even if it is less well matching the original.
+
+
+
