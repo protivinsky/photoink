@@ -41,7 +41,7 @@ Any battery with 3.7V and JST-PH connector should work. I used LiPol battery wit
 
 ### Others
 
-Some jumper wires with female connector on one end (commonly used with breadboard) and the soldering equipment. It is very easy soldering, I had basically none experiece with it before - only needed to connect the other end of wires to the controller. Alternatively you can use controller with headers and just connect everything with female-female wires, without any soldering at all (but you might not be able to attach everything to the back of the frame).
+Some jumper wires with female connector on one end (commonly used with breadboard) and the soldering equipment. It is very easy soldering, I had basically no experience with it before - only needed to connect the other end of wires to the controller. Alternatively you can use controller with headers and just connect everything with female-female wires, without any soldering at all (but you might not be able to attach everything to the back of the frame).
 
 ## Tutorial
 
@@ -56,7 +56,7 @@ As the resolution is only 800x480 and the display can use only a limited set of 
 
 After connecting the controller to the computer, it should appear as a storage device (after pressing `reset` button on the controller) and the photos should be just copied there under `img` folder.
 
-**If you have the newer GDEP073E01 display, use [spectra/prepare_photos.py](spectra/prepare_photos.py) instead!** It does not use orange color and encode other colors slightly differently, so the photos have to be transformed slightly differently.
+**If you have the newer GDEP073E01 display, use [spectra/prepare_photos.py](spectra/prepare_photos.py) instead!** It does not use orange color and encode other colors slightly differently, so the transformation of the photos has to be modified.
 
 ### 2. Connecting controller and display
 
