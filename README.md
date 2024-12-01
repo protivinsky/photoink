@@ -12,6 +12,7 @@ This repository shows how to turn color e-ink display into a personal digital ph
 You need 7.3 inch full color e-ink display:
 
 - [Good Display GDEY073D46](https://www.good-display.com/product/442.html) - older ACeP version, supporting 7 colors, might not be in stock anymore. [AliExpress](https://www.aliexpress.com/item/1005005671413173.html), [Laskakit](https://www.laskakit.cz/good-display-gdey073d46-7-3--800x480-epaper-barevny-displej/) (local Czech seller I typically use)
+  - Update 2024-12-01: [Waveshare](https://www.waveshare.com/7.3inch-e-paper-f.htm) also offers this ACeP display. I prefer it over the newer and faster Spectre E6, the orange color means the photos look less noisy and I do not mind slower refresh rate on the photo frame.
 - [Good Display GDEP073E01](https://www.good-display.com/product/533.html) - newer Spectra E6 version, faster refresh, but support only 6 colors. [AliExpress](https://www.aliexpress.com/item/1005007253583430.html), [Laskakit](https://www.laskakit.cz/good-display-gdep073e01-7-3--800x480-epaper-barevny-displej/).
 
 In addition, you need a connection adapter board that handles the serial communication between the display and microcontroller:
